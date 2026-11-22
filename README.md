@@ -2,14 +2,7 @@
 
 **The AI-First Charting & Market Analysis Engine.**
 
-<p align="center">
-  <a href="./demo.mp4">
-    <img src="./demo.gif" alt="RicoChart Engine Demo" width="100%" />
-  </a>
-</p>
-<p align="center">
-  <em>RicoChart Engine Demo — <a href="./demo.mp4">Watch full video (demo.mp4)</a></em>
-</p>
+<video src="https://github.com/abrarnasirjaffari/RicoChart/raw/main/demo.mp4" controls width="100%"></video>
 
 Traditional charting platforms were built for human eyes and mouse clicks. Even with workarounds, AI agents struggle to use them properly because they weren't designed for AI from the ground up.
 
