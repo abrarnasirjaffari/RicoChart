@@ -1,6 +1,8 @@
 node_modules/
 .worktrees/
 dist/
+packages/*/dist/
+packages/*/dist-baseline/
 docs/api/
 __pycache__/
 *.log

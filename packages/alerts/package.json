@@ -1,0 +1,19 @@
+{
+  "name": "@rico-chart/alerts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Event-driven market alert & AI wake-up watchdog for RicoChart so AI stays idle when nothing is happening.",
+  "license": "MIT",
+  "author": "RICO",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@rico-chart/events": "*"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  }
+}

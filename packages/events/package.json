@@ -1,0 +1,16 @@
+{
+  "name": "@rico-chart/events",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RicoChart News Explorer & Macro/Big Events Calendar (FOMC, CPI, NFP, central banks, earnings, blackout windows).",
+  "license": "MIT",
+  "author": "RICO",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  }
+}

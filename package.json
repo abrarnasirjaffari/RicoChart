@@ -1,8 +1,8 @@
 {
-  "name": "rico-chart",
-  "version": "2.7.3",
+  "name": "rico-chart-workspace",
+  "version": "1.0.0",
   "private": true,
-  "description": "RicoChart — AI-first, dependency-free canvas & WebGL2 charting and market analysis engine.",
+  "description": "RicoChart — AI-first charting engine, event-driven alert watchdogs, pure-code execution, no-look-ahead backtester, live paper trading, news & macro events, and market connectors.",
   "license": "MIT",
   "author": "RICO",
   "homepage": "https://github.com/abrarnasirjaffari/RicoChart#readme",
@@ -13,88 +13,18 @@
   "bugs": {
     "url": "https://github.com/abrarnasirjaffari/RicoChart/issues"
   },
-  "keywords": [
-    "charts",
-    "charting",
-    "candlestick",
-    "trading",
-    "finance",
-    "canvas",
-    "ricochart",
-    "rico",
-    "ai-charts",
-    "technical-analysis",
-    "drawing-tools",
-    "footprint",
-    "renko",
-    "heikin-ashi",
-    "widget"
-  ],
   "type": "module",
-  "module": "dist/rico-chart.mjs",
-  "unpkg": "dist/rico-chart.standalone.js",
-  "jsdelivr": "dist/rico-chart.standalone.js",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/rico-chart.mjs",
-      "default": "./dist/rico-chart.mjs"
-    },
-    "./transform": {
-      "types": "./dist/transform/index.d.ts",
-      "import": "./dist/rico-chart.transform.mjs",
-      "default": "./dist/rico-chart.transform.mjs"
-    },
-    "./profile": {
-      "types": "./dist/profile/index.d.ts",
-      "import": "./dist/rico-chart.profile.mjs",
-      "default": "./dist/rico-chart.profile.mjs"
-    },
-    "./draw": {
-      "types": "./dist/draw/index.d.ts",
-      "import": "./dist/rico-chart.draw.mjs",
-      "default": "./dist/rico-chart.draw.mjs"
-    },
-    "./webgl": {
-      "types": "./dist/webgl/index.d.ts",
-      "import": "./dist/rico-chart.webgl.mjs",
-      "default": "./dist/rico-chart.webgl.mjs"
-    },
-    "./workspace": {
-      "types": "./dist/workspace/index.d.ts",
-      "import": "./dist/rico-chart.workspace.mjs",
-      "default": "./dist/rico-chart.workspace.mjs"
-    },
-    "./widget": {
-      "types": "./dist/widget/index.d.ts",
-      "import": "./dist/rico-chart.widget.mjs",
-      "default": "./dist/rico-chart.widget.mjs"
-    }
-  },
-  "files": [
-    "dist/**",
-    "!dist/rico-chart.all.mjs",
-    "!dist/rico-chart.all.mjs.map"
-  ],
-  "sideEffects": [
-    "**/transform/**",
-    "**/draw/**",
-    "**/webgl/**",
-    "**/widget/**",
-    "./dist/rico-chart.transform.mjs",
-    "./dist/rico-chart.draw.mjs",
-    "./dist/rico-chart.webgl.mjs",
-    "./dist/rico-chart.widget.mjs"
+  "workspaces": [
+    "packages/*"
   ],
   "scripts": {
-    "clean": "rimraf dist",
-    "build": "rimraf dist && node --max-old-space-size=4096 node_modules/rollup/dist/bin/rollup -c",
-    "build:watch": "rollup -c --watch",
-    "typecheck": "tsc --noEmit && tsc --noEmit -p tests",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "lint": "eslint ."
+    "clean": "npm run clean --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "build:chart": "npm run build --workspace=packages/chart",
+    "typecheck": "npm run typecheck --workspaces",
+    "test": "npm run test --workspaces",
+    "test:chart": "npm run test --workspace=packages/chart",
+    "lint": "npm run lint --workspace=packages/chart && eslint ."
   },
   "engines": {
     "node": ">=20"

@@ -1,0 +1,16 @@
+{
+  "name": "@rico-chart/execution",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pure-code, deterministic trading execution engine for RicoChart (zero AI in execution path).",
+  "license": "MIT",
+  "author": "RICO",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  }
+}

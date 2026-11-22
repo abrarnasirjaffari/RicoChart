@@ -43,6 +43,22 @@ Instead of guessing from one static screenshot, RicoChart gives AI agents **3-Wa
 
 ---
 
+## Workspace Architecture (`v1.0.0`)
+
+RicoChart is organized as a modular TypeScript monorepo (`packages/*`) on `main`:
+
+| Package | Responsibility |
+| :--- | :--- |
+| **`packages/chart`** (`rico-chart`) | Zero-dependency Canvas & WebGL2 charting engine, drawing tools, transforms, orderflow profiles, widget shell, and workspace persistence. |
+| **`packages/alerts`** (`@rico-chart/alerts`) | Event-driven alert & AI wake-up watchdog (edge-triggered price/zone/volatility/macro rules with cooldowns so AI sleeps at 0 tokens during quiet markets). |
+| **`packages/execution`** (`@rico-chart/execution`) | **Pure-code deterministic execution engine** (zero AI allowed in execution path): order state machine, OCO bracket SL/TP, risk sizing, drawdown kill-switch, and blackout gates. |
+| **`packages/backtest`** (`@rico-chart/backtest`) | Strictly **no-look-ahead** causal backtester (`SimulatedClock`, `PointInTimeFeed`, next-bar execution parity with `@rico-chart/execution`, performance metrics). |
+| **`packages/paper-trading`** (`@rico-chart/paper-trading`) | Live paper trading engine driving `@rico-chart/execution` on streaming feeds with virtual balances, trade journal, and RicoChart order/P&L overlays. |
+| **`packages/events`** (`@rico-chart/events`) | News Explorer and Macro/Big Events Calendar (FOMC meetings, CPI, NFP, central banks, earnings, pre/post blackout windows, and chart timeline markers). |
+| **`packages/connectors`** (`@rico-chart/connectors`) | Unified plug-in market data connector registry for Crypto, Forex, Global Stocks, and regional exchanges (PSX, KRX). |
+
+---
+
 ## Project Status
 
-🚧 **Early Development** — Currently designing and building the core RicoChart engine and AI perception layer.
+🚀 **v1.0.0** — Modular monorepo foundation live with core charting engine, event-driven alert watchdog, pure-code execution, no-look-ahead backtester, live paper trading, news & macro events, and market connectors.

@@ -1,0 +1,19 @@
+{
+  "name": "@rico-chart/backtest",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Strictly no-look-ahead causal backtesting engine for RicoChart, sharing @rico-chart/execution.",
+  "license": "MIT",
+  "author": "RICO",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@rico-chart/execution": "*"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  }
+}

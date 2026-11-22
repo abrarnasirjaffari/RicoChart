@@ -42,14 +42,15 @@ npm run build       # Build all ESM, standalone, and .d.ts bundles into dist/
 
 ## Architecture & Code Standards
 
-1. **Zero runtime dependencies:** RicoChart is dependency-free at runtime. Keep it that way.
-2. **Respect tier boundaries:** `eslint.config.js` enforces the tier ACL:
-   - Base tier (`src/core`, `src/render`, `src/scale`, `src/model`, `src/primitives`, `src/input`, `src/feed`, `src/replay`, `src/compare`, `src/link`, `src/helpers`, `src/alerts`) must never import lazy tiers (`draw`, `transform`, `profile`, `webgl`, `widget`, `workspace`).
-   - Lazy tiers (except `widget`) must not import `widget`.
-   - `src/widget` must import shared runtime state through package specifiers (`rico-chart`, `rico-chart/draw`, `rico-chart/workspace`, etc.) rather than deep relative paths so singletons and registries are never duplicated across bundles.
-3. **Strict TypeScript in `src/`:**
-   - `src/` is compiled with strict settings including `noUncheckedIndexedAccess` and `exactOptionalPropertyTypes`. Use `LooseOptional` from `src/helpers/types.ts` where appropriate instead of loosening compiler options.
-   - `tests/tsconfig.json` intentionally disables only `noUncheckedIndexedAccess` and `exactOptionalPropertyTypes` for test ergonomics (`tests/typecheck-config.test.ts` guards this).
+1. **Zero runtime dependencies:** RicoChart packages stay dependency-free at runtime. Keep it that way.
+2. **Respect package & tier boundaries:**
+   - `packages/chart/eslint.config.js` enforces the chart engine tier ACL (base tier never imports lazy tiers; `src/widget` imports shared state via `rico-chart` specifiers).
+   - Root `eslint.config.js` enforces trading platform boundaries:
+     - `packages/execution` is **pure deterministic code** and must never import AI modules.
+     - `packages/backtest` must remain strictly **no-look-ahead / causal** and never import live paper-trading or live connectors.
+3. **Strict TypeScript:**
+   - All `packages/*/src/` code compiles with strict settings including `noUncheckedIndexedAccess` and `exactOptionalPropertyTypes`.
+   - `packages/chart/tests/tsconfig.json` intentionally disables only `noUncheckedIndexedAccess` and `exactOptionalPropertyTypes` for chart test ergonomics (`packages/chart/tests/typecheck-config.test.ts` guards this).
 4. **No `any` or `console.*` in `src/`:** ESLint forbids `@typescript-eslint/no-explicit-any` and `no-console` in production source files.
 5. **RicoChart branding only:** Keep all identifiers, CSS prefixes (`.rico-*`, `--rico-*`), storage keys, docs, and comments clean and specific to RicoChart.
 
