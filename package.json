@@ -3,6 +3,7 @@
   "version": "2.7.3",
   "private": true,
   "description": "RicoChart — AI-first, dependency-free canvas & WebGL2 charting and market analysis engine.",
+  "license": "MIT",
   "author": "RICO",
   "homepage": "https://github.com/abrarnasirjaffari/RicoChart#readme",
   "repository": {
