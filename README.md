@@ -2,7 +2,7 @@
 
 **The AI-First Charting & Market Analysis Engine.**
 
-Traditional charting platforms like TradingView were built for human eyes and mouse clicks. Even with workarounds, AI agents struggle to use them properly because they weren't designed for AI from the ground up.
+Traditional charting platforms were built for human eyes and mouse clicks. Even with workarounds, AI agents struggle to use them properly because they weren't designed for AI from the ground up.
 
 **RicoChart flips the model:** AI agents sit in the driver's seat—exploring charts, switching timeframes, running indicators, and drawing setups natively—while humans watch live as co-pilots, helpers, and decision-makers.
 
